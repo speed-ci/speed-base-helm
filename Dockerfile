@@ -9,7 +9,7 @@ RUN apk add --update ca-certificates \
  && apk del --purge deps \
  && rm /var/cache/apk/*
 
-ENV HELM_LATEST_VERSION="v2.8.1"
+ENV HELM_LATEST_VERSION="v2.9.0-rc5"
 
 RUN apk add --update ca-certificates \
  && apk add --update -t deps wget \

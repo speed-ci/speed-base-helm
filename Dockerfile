@@ -1,6 +1,6 @@
 FROM docker-artifactory.sln.nc/speed/speed-base
 
-ENV KUBE_LATEST_VERSION="v1.9.3"
+ENV KUBE_LATEST_VERSION="v1.11.2"
 
 RUN apk add --update ca-certificates \
  && apk add --update -t deps curl \

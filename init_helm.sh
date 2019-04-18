@@ -57,8 +57,4 @@ init_helm_env () {
     if [[ -z $NAMESPACE ]]; then
         NAMESPACE=${NAMESPACE_MAPPING_RULES[$BRANCH_NAME]:-$BRANCH_NAME}
     fi    
-
-    printstep "Définition du contexte Kubernetes par défaut"
-    printcomment "kubectl config use-context $KUBE_CONTEXT"
-    kubectl config use-context $KUBE_CONTEXT
 }

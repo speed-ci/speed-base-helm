@@ -19,6 +19,9 @@ RUN apk add --update ca-certificates \
  && apk del --purge deps \
  && rm /var/cache/apk/* \
  && rm -f /helm-${HELM_LATEST_VERSION}-linux-amd64.tar.gz
- 
+
+COPY init_helm.sh /init_helm.sh
+RUN chmod +x /init_helm.sh
+
 ONBUILD COPY docker-entrypoint.sh /docker-entrypoint.sh
 ONBUILD RUN chmod +x /docker-entrypoint.sh

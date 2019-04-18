@@ -49,12 +49,4 @@ init_helm_env () {
     fi
         BRANCH_NAME=${BRANCH_NAME:-"master"}
     fi
-
-    if [[ -z $KUBE_CONTEXT ]]; then
-        DEFAULT_KUBE_CONTEXT=$(kubectl config current-context 2>/dev/null || echo "")
-        KUBE_CONTEXT=${KUBE_CONTEXT_MAPPING_RULES[$BRANCH_NAME]:-$DEFAULT_KUBE_CONTEXT}
-    fi
-    if [[ -z $NAMESPACE ]]; then
-        NAMESPACE=${NAMESPACE_MAPPING_RULES[$BRANCH_NAME]:-$BRANCH_NAME}
-    fi    
 }

@@ -28,23 +28,20 @@ init_helm_env () {
         exit 1
     fi
     
-    echo "BRANCH_KUBE_CONTEXT_MAPPING: $BRANCH_KUBE_CONTEXT_MAPPING"
     declare -gA KUBE_CONTEXT_MAPPING_RULES
     if [[ $BRANCH_KUBE_CONTEXT_MAPPING  ]]; then
         while read name value; do
             KUBE_CONTEXT_MAPPING_RULES[$name]=$value
         done < <(<<<"$BRANCH_KUBE_CONTEXT_MAPPING" awk -F= '{print $1,$2}' RS=',|\n')
     fi
-    export KUBE_CONTEXT_MAPPING_RULES
 
-    declare -A NAMESPACE_MAPPING_RULES
+    declare -gA NAMESPACE_MAPPING_RULES
     NAMESPACE_MAPPING_RULES[master]=default
     if [[ $BRANCH_NAMESPACE_MAPPING  ]]; then
         while read name value; do
             NAMESPACE_MAPPING_RULES[$name]=$value
         done < <(<<<"$BRANCH_NAMESPACE_MAPPING" awk -F= '{print $1,$2}' RS=',|\n')
     fi
-    export NAMESPACE_MAPPING_RULES
 
     if [[ -z $BRANCH_NAME ]]; then
     if [[ ! $(git status | grep "Initial commit")  ]]; then

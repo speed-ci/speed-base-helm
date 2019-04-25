@@ -34,6 +34,7 @@ init_helm_env () {
             KUBE_CONTEXT_MAPPING_RULES[$name]=$value
         done < <(<<<"$BRANCH_KUBE_CONTEXT_MAPPING" awk -F= '{print $1,$2}' RS=',|\n')
     fi
+    export KUBE_CONTEXT_MAPPING_RULES
 
     declare -A NAMESPACE_MAPPING_RULES
     NAMESPACE_MAPPING_RULES[master]=default
@@ -42,6 +43,7 @@ init_helm_env () {
             NAMESPACE_MAPPING_RULES[$name]=$value
         done < <(<<<"$BRANCH_NAMESPACE_MAPPING" awk -F= '{print $1,$2}' RS=',|\n')
     fi
+    export NAMESPACE_MAPPING_RULES
 
     if [[ -z $BRANCH_NAME ]]; then
     if [[ ! $(git status | grep "Initial commit")  ]]; then

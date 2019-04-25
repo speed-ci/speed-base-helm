@@ -36,6 +36,7 @@ init_helm_env () {
     fi
     export KUBE_CONTEXT_MAPPING_RULES
 
+    echo "BRANCH_NAMESPACE_MAPPING: $BRANCH_NAMESPACE_MAPPING"
     declare -A NAMESPACE_MAPPING_RULES
     NAMESPACE_MAPPING_RULES[master]=default
     if [[ $BRANCH_NAMESPACE_MAPPING  ]]; then

@@ -29,7 +29,7 @@ init_helm_env () {
     fi
     
     echo "BRANCH_KUBE_CONTEXT_MAPPING: $BRANCH_KUBE_CONTEXT_MAPPING"
-    declare -A KUBE_CONTEXT_MAPPING_RULES
+    declare -gA KUBE_CONTEXT_MAPPING_RULES
     if [[ $BRANCH_KUBE_CONTEXT_MAPPING  ]]; then
         while read name value; do
             KUBE_CONTEXT_MAPPING_RULES[$name]=$value

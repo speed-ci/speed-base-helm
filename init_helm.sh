@@ -27,7 +27,8 @@ init_helm_env () {
         printerror "- soit en renseignant la variable d'environnement KUBECONFIG_OVERRIDE (les guillements doivent être échappés)"
         exit 1
     fi
-
+    
+    echo "BRANCH_KUBE_CONTEXT_MAPPING: $BRANCH_KUBE_CONTEXT_MAPPING"
     declare -A KUBE_CONTEXT_MAPPING_RULES
     if [[ $BRANCH_KUBE_CONTEXT_MAPPING  ]]; then
         while read name value; do
@@ -36,7 +37,6 @@ init_helm_env () {
     fi
     export KUBE_CONTEXT_MAPPING_RULES
 
-    echo "BRANCH_NAMESPACE_MAPPING: $BRANCH_NAMESPACE_MAPPING"
     declare -A NAMESPACE_MAPPING_RULES
     NAMESPACE_MAPPING_RULES[master]=default
     if [[ $BRANCH_NAMESPACE_MAPPING  ]]; then
